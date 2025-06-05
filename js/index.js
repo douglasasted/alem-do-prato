@@ -14,9 +14,16 @@ function getRandomInt(min, max)
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-var previousImg;
+function preloadImage(url)
+{
+    var img=new Image();
+    img.src=url;
+}
+
 
 // Main
+var previousImg;
+
 function fadeInImage() 
 {
     var i = getRandomInt(0, homeImages.length);
@@ -45,3 +52,9 @@ function fadeOutImage()
 var intervalId = window.setInterval(function(){fadeOutImage();}, intervalTime * 1000);
 
 fadeInImage();
+
+// Pre-loading all images so that the fade is better
+for (let i = 0; i < homeImages.length; i++) 
+{
+    preloadImage(homeImages[i]);
+}
