@@ -1,53 +1,80 @@
-@import url('https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@font-face 
+{
+  font-family: philosopher-regular;
+  src: url(font/Philosopher-Regular.ttf);
+}
 
 html, body {
     margin: 0;
     padding: 0;
 
-    font-family: "Arsenal", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+    /* Font for the whole website */
+    font-family: philosopher-regular;
 }
 
 body {
-    background-color: #f6f6f5;
+    background-image: url("./img/home/armenia_1.jpg");
+    background-position: center;
+    background-position-y: 40%;
+
+    background-blend-mode: multiply;
+    background-color: black;
+
+    transition: background-color 1s ease;
+}
+
+body.in {
+    background-color: white;
+}
+
+
+header img {
+    height: auto;
 }
 
 header, footer {
     text-align: center;
-    padding: 20px;
 }
 
-header h1 {
-    font-size: 70px;
-    margin: 10px 0 20px 0;
+/* Desktop Responsive */
+@media (min-width: 1000px)
+{
+    body {
+        background-size: 150%;
+    }
+
+    header img {
+        width: 10%;
+    }
+
+    header, footer {
+        padding: 0.5%;
+    }
 }
 
-main {
-    width: 800px;
-    margin: 0 auto;
+/* Mobile Responsive */
+@media (max-width: 1000px) {
+    body {
+        background-size: fit;
+    }
+
+    header img {
+        width: 25%;
+    }
+
+    header, footer {
+        padding: 3%;
+    }
 }
 
-main h2 {
-    font-size: 30px;
-    margin: 30px 0 10px 0;
+header {
+    background-color: #f6f6f5;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-main img {
-    max-width: 100%;
-}
-p, ul, ol {
-    font-size: 20px;
-    line-height: 30px;
-}
-
-ul, ol {
-    padding: 0;
-    list-style-position: inside;
-}
-
-p.caption {
-    font-size: 16px;
-    font-style: oblique;
-    margin: 0;
+header a {
+    font-size: 200%;
+    padding-left: 5%;
 }
