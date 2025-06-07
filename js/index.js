@@ -1,5 +1,6 @@
 var intervalTime = 10;
-var transitionTime = 1.25; 
+var transitionTime = 1.5; 
+
 var homeImagesUrls = [
     'armenia_1.jpg', 'armenia_2.jpg','armenia_3.jpg',
     'colombia_1.jpg','colombia_2.jpg','colombia_3.jpg',
@@ -7,7 +8,19 @@ var homeImagesUrls = [
     'grecia_1.jpg','grecia_2.jpg','grecia_3.jpg',
     'italia_1.jpg','italia_2.jpg','italia_3.jpg',
     'japao_1.jpg','japao_2.jpg','japao_3.jpg']
+    
+var imageTitles = [
+    'Effendi', 'Effendi', 'Effendi', 
+    'Macondo', 'Macondo', 'Macondo',
+    'Petit Pain', 'Petit Pain', 'Petit Pain',
+    'Acrópolis', 'Acrópolis', 'Acrópolis',
+    'Gigio', 'Gigio', 'Gigio',
+    'Kidoairaku', 'Kidoairaku', 'Kidoairaku'
+]
+
 var homeImages = [];
+var mainImg = document.getElementsByTagName('main')[0].children[0];
+var imgTitle = document.getElementsByClassName('typewriter')[0];
 
 // Utility
 function getRandomInt(min, max)
@@ -41,14 +54,16 @@ function fadeInImage()
             i = 0;
     }
 
-    var backgroundImg = 'url("' + homeImages[i].src + '")';
-    var img = document.getElementsByClassName('focus')[0];
+    var backgroundImg = homeImages[i].src;
 
-    console.log(img);
-
-    document.body.style.backgroundImage = backgroundImg;
+    document.body.style.backgroundImage = 'url("' + backgroundImg + '")';
     document.body.className = "in"; 
-    img.src = backgroundImg;
+    mainImg.src = backgroundImg;
+    mainImg.className = "in"; 
+    
+    imgTitle.className = "typewriter typing";
+    imgTitle.children[0].textContent = imageTitles[i];
+
     previousImg = i;
 }
 
@@ -56,6 +71,8 @@ function fadeOutImage()
 {
     // Fade out previous background
     document.body.className = "";
+    mainImg.className = "";
+    imgTitle.className = "typewriter deleting";
     
     // Fade in new background
     setTimeout(() => { fadeInImage(); }, transitionTime * 1000);

@@ -1,5 +1,4 @@
-@font-face 
-{
+@font-face {
   font-family: philosopher-regular;
   src: url(font/Philosopher-Regular.ttf);
 }
@@ -21,27 +20,57 @@ body {
     background-blend-mode: multiply;
     background-color: black;
 
+    backdrop-filter: blur(8px);
+    z-index: 1;
+
     transition: background-color 1s ease;
+
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}    
+
+main {
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+main img.in {
+    opacity: 1;
 }
 
 body.in {
-    background-color: white;
+    background-color: rgb(168, 168, 168);
 }
-
 
 header img {
     height: auto;
 }
 
-header {
+header, footer {
+    background-color: #f6f6f5ef;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     text-align: center;
-    opacity: 0.88;
     box-shadow: 0px 20px 40px 10px rgba(0, 0, 0, 0.7);
 }
 
+footer {
+    opacity: 0.8;
+}
+
+div.links {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+header a {
+    font-size: 165%;
+    padding: 10%;
+}
+
 /* Desktop Responsive */
-@media (min-width: 1000px)
-{
+@media (min-width: 1000px) {
     body {
         background-size: 100%;
     }
@@ -54,8 +83,26 @@ header {
         padding: 0.5%;
     }
 
+    main {
+        display: flex;
+        flex-direction: row;
+    }
+
     main img {
-        display: none;
+        object-fit: cover;
+        max-width: 58%;
+        max-height: 100%;
+
+        opacity: 0;
+        transition: opacity 1s ease;
+    }
+
+    main h2 {
+        font-size: 100%;
+    }
+
+    .typewriter h1 {
+        font-size: 250%;
     }
 }
 
@@ -63,8 +110,6 @@ header {
 @media (max-width: 1000px) {
     body {
         background-size: 400%;
-        backdrop-filter: blur(8px);
-        z-index: 1;
     }
 
     header img {
@@ -79,25 +124,72 @@ header {
         display: none !important;
     }
 
+    main {
+        display: flex;
+        flex-direction: column;
+    }
+
     main img {
-        width: 100%;
-        margin-top: 50%;
+        object-fit: cover;
+        max-width: 100%;
+        max-height: 100%;
+
+        opacity: 0;
+        transition: opacity 1s ease;
+    }
+
+    main h2 {
+        font-size: 120%;
+    }
+
+    .typewriter h1 {
+        font-size: 200%;
     }
 }
 
-header {
-    background-color: #f6f6f5;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+main h2 {
+    color: white;
+    text-align: center;
+    width: 150%;
 }
 
-div.links {
-    display: flex;
-    justify-content: space-evenly;
+.typewriter h1 {
+    color: white;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid white; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .16em; /* Adjust as needed */
 }
 
-header a {
-    font-size: 165%;
-    padding: 10%;
+.typewriter.typing h1 {
+    width: 100%;
+    animation: 
+        typing 2s steps(15, end),
+        blink-caret .8s step-end infinite;
+}
+
+.typewriter.deleting h1 {
+    width: 0;
+    animation: 
+        deleting 1s steps(15, end),
+        blink-caret .8s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typing effect */
+@keyframes deleting {
+  from { width: 100% }
+  to { width: 0 }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: white; }
 }
