@@ -57,12 +57,13 @@ header img {
 }
 
 header, footer {
+    background-image: url('img/background.jpg');
     background-color: #ffffffef;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     text-align: center;
-    box-shadow: 0px 20px 40px 10px rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 20px 40px 10px rgba(0, 0, 0, 0.6);
 }
 
 footer {
