@@ -1,5 +1,7 @@
+// TODO: Remove the flickering between the transition of images
+
 var intervalTime = 10;
-var transitionTime = 1.5; 
+var transitionTime = 3.5; 
 
 var homeImagesUrls = [
     'armenia_1.jpg', 'armenia_2.jpg','armenia_3.jpg',
